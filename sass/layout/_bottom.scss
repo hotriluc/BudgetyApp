@@ -1,0 +1,108 @@
+.container {
+    width: 65vw;
+    margin: 6rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.income {
+    flex: 0 0 47.5%;
+    margin-right: 5rem;
+    /* float: left;
+    width: 47.5rem;
+    margin-right: 5rem; */
+    &__title { color: #28B9B5; }
+}
+
+.expenses {
+    flex: 0 0 50%;
+    /* float: left;
+    width: 47.5rem; */
+    &__title { color: #FF5049; }
+}
+
+
+
+
+.item {
+    padding: 13px;
+    border-bottom: 1px solid #e7e7e7;
+    display: flex;
+
+    &:first-child { border-top: 1px solid #e7e7e7; }
+    &:nth-child(even) { background-color: #f7f7f7; }
+
+    &__description {
+        float: left;
+    }
+
+    &__value {
+        float: left;
+        transition: transform 0.3s;
+    }
+
+    &__percentage {
+        float: left;
+        margin-left: 20px;
+        transition: transform 0.3s;
+        font-size: 11px;
+        background-color: #FFDAD9;
+        padding: 3px;
+        border-radius: 3px;
+        width: 32px;
+        text-align: center;
+    }
+
+    .income &__value,
+    .income &__delete--btn {
+        color: #28B9B5;
+    }
+
+    .expenses &__value,
+    .expenses &__percentage,
+    .expenses &__delete--btn {
+        color: #FF5049;
+    }
+
+    &__delete {
+        &--btn {
+            font-size: 22px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+            display: none;
+
+            &:focus { outline: none; }
+            &:active { transform: translateY(2px); }
+
+            
+        }
+       
+    }
+    
+ 
+    
+
+    &:hover &__delete--btn { display: block; }
+    &:hover &__value { transform: translateX(-20px); }
+    &:hover &_percentage { transform: translateX(-20px); }
+    
+
+}
+
+
+
+.unpaid {
+    background-color: #FFDAD9 !important;
+    cursor: pointer;
+    color: #FF5049;
+
+}
+
+.unpaid .item__percentage { box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1); }
+.unpaid:hover .item__description { font-weight: 900; }
+

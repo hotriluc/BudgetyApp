@@ -1,0 +1,102 @@
+
+.top {
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(../img/back.png);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+}
+
+.budget {
+  
+    /* position: absolute;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 35%;
+ 
+    display: flex;
+    flex-direction: column;
+ 
+    color: #fff;
+
+
+    &__title {
+        font-size: 1.8rem;
+        text-align: center;
+        font-weight: 300;
+    }
+
+    &__value {
+        font-weight: 300;
+        font-size: 4rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        letter-spacing: 2px;
+    }
+    
+    &__income,
+    &__expenses {
+        display: flex;
+        
+        align-items: center;
+    
+        padding: 1.2rem;
+        text-transform: uppercase;
+    
+    }
+    
+    &__income {
+        margin-bottom: 1rem;
+        background-color: #28B9B5;
+    }
+    
+    &__expenses {
+        background-color: #FF5049;
+    }
+
+
+    &__income--text,
+    &__expenses--text {
+        float: left;
+        font-size: 1.3rem;
+        color: #444;
+    }
+
+    &__income--value,
+    &__expenses--value {
+        letter-spacing: 1px;
+        float: left;
+    }
+
+    &__income--percentage,
+    &__expenses--percentage {
+        float: left;
+        width: 3.4rem;
+        font-size: 1rem;
+        padding: 3px 0;
+        margin-left: 1rem;
+    }
+
+    &__expenses--percentage {
+        background-color: rgba(255, 255, 255, 0.2);
+        text-align: center;
+        border-radius: 3px;
+    }
+    
+}
+
+
+
+
+
+
+
+
