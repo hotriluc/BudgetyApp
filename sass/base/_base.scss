@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+html {
+    font-size:62.5%;
+}
+
+body {
+    color: #555;
+    font-family: Open Sans;
+    font-size: 1.6rem;
+    position: relative;
+    height: 100vh;
+    font-weight: 400;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.right { 
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.red { color: #FF5049 !important; }
+.red-focus:focus { border: 1px solid #FF5049 !important; }
+
