@@ -169,8 +169,10 @@ var UIController = (function (){
         budgetLabel: '.budget__value',
         incomeLabel: '.budget__income--value',
         expensesLabel: '.budget__expenses--value',
-        expensesPercentageLabel: '.budget__expenses--percentage',
-        container: '.container'
+        PercentageLabel: '.budget__expenses--percentage',
+        container: '.container',
+        expensesPercentageLabel: '.item__percentage',
+      
     }
 
   
@@ -251,10 +253,35 @@ var UIController = (function (){
             document.querySelector(domStrings.expensesLabel).textContent = obj.totalExp;
              //Display percentage expense depends to income
              if(obj.percentage > 0){
-                document.querySelector(domStrings.expensesPercentageLabel).textContent = obj.percentage + '%';
+                document.querySelector(domStrings.PercentageLabel).textContent = obj.percentage + '%';
              } else {
-                document.querySelector(domStrings.expensesPercentageLabel).textContent = '-';
+                document.querySelector(domStrings.PercentageLabel).textContent = '-';
              }
+        },
+
+        // Displaying percentages
+
+        displayPercentages: function(percentages){
+            //node list
+            var fields = document.querySelectorAll(domStrings.expensesPercentageLabel);
+
+            //ForEach function
+            //Iterate list and calling function
+            var nodeListForEach = function(list, callback){
+                for (var i = 0; i<list.length ; i++){
+                  callback(list[i], i);
+                }
+            }
+
+            //callback function goona set percent on UI
+            nodeListForEach(fields, function(current,index){
+                 if (percentages[index] >0) {
+                     current.textContent = percentages[index] + '%';
+                 } else {
+                    current.textContent = '-';
+                 }
+            });
+
         }
 
 
@@ -302,6 +329,7 @@ var Controller = (function(budgetCtrl, UICtrl){
         var percentages = budgetCtrl.getPercentages();
         console.log(percentages);
 
+        UICtrl.displayPercentages(percentages);
         
 
     }
