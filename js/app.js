@@ -5,12 +5,27 @@ var budgetController = (function(){
         this.id = id;
         this.description = description;
         this.value = value;
+        this.percentage = -1;
     };
-    
+
+    //Expense's Percentage of total income
+    Expense.prototype.calcPercentage = function(totalIncome){
+        if (totalIncome>0){
+        this.percentage =  Math.round(this.value/totalIncome*100);
+        }
+
+    }
+
+    Expense.prototype.getPercentage = function(){
+        return this.percentage;
+    }
+
     var Income = function(id, description, value){
         this.id = id;
         this.description = description;
         this.value = value;
+
+
     };
 
     var calculateTotal = function(type){
@@ -101,6 +116,22 @@ var budgetController = (function(){
             }
 
             return data.budget;
+        },
+
+        //Each expenses has access to calculatePercentage method of Expneses Prototype
+        calculatePercentages: function(){
+            data.allItems.exp.forEach(function(el){
+                el.calcPercentage(data.totals.inc);
+            })
+        },
+
+        //After calculating perctages of each expenses return map 
+        //Expenses Percentage of total income
+        getPercentages: function(){
+            var allPercentages = data.allItems.exp.map(function(cur){
+                return cur.getPercentage();
+            });
+            return allPercentages;
         },
 
         //Returning Budget, total income,total expneses and percentage
@@ -262,6 +293,18 @@ var Controller = (function(budgetCtrl, UICtrl){
 
     }
     
+    //Expenses Percentage of total income
+    var updatePercentages = function(){
+
+        //Calculate percentages
+        budgetCtrl.calculatePercentages();
+        //Get percentages
+        var percentages = budgetCtrl.getPercentages();
+        console.log(percentages);
+
+        
+
+    }
 
     var ctrlAddItem = function(){
         var input, newItem;
@@ -280,6 +323,9 @@ var Controller = (function(budgetCtrl, UICtrl){
 
                 //calculate and update budget
                 UpdateBudget();
+
+                //calculate and update percentages
+                updatePercentages();
             } 
            
     }
@@ -305,6 +351,9 @@ var Controller = (function(budgetCtrl, UICtrl){
             UICtrl.removeListItem(itemID);
             //update budget
             UpdateBudget();
+
+            //Update percentages
+            updatePercentages();
         }
        
         
